@@ -5,6 +5,7 @@ const teacherSchema = mongoose.Schema({
     lname: String,
     empno: String,
     email: String,
+    password: String,
     exams: [{
         examId: String,
         examDate: Date,
