@@ -1,17 +1,23 @@
 const express = require('express');
-const router = require('./routes');
-
 const app = express();
+const teacher = require('./routes/teacher');
 
-app.use('/',router);
+app.use(express.json());
 
-const startServer = async (PORT, callback) => {
-    const server = app.listen(PORT, () => {
-        console.log(`Listening on port ${PORT}`);
-    }) 
+app.use('/teach',teacher);
 
-    if(callback) callback(server);
-    return server;
-}
+//const PORT = 3000;
 
-module.exports = { getApp: () => app, listen : startServer}
+// const startServer = async (PORT, callback) => {
+//     const server = app.listen(PORT, () => {
+//         console.log(`Listening on port ${PORT}`);
+//     }) 
+
+//     if(callback) callback(server);
+//     return server;
+// }
+
+//app.listen(3000,()=>{console.log("Listening on port no 3000")});
+
+// module.exports = { getApp: () => app, listen : startServer}
+app.listen(3000,()=>console.log("Starting server at port 3k"));
