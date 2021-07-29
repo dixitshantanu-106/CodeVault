@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost/codevault1')
     .then(()=>console.log('connected to database'))
     .catch(error=>console.log("Error while connecting to database\n"+error));
+const mongoose = require('mongoose');
+const Joi = require('joi');
+const jpc = require('joi-password-complexity');  
 
 //creating studentSchema
 const studentSchema = new mongoose.Schema({
@@ -41,4 +44,18 @@ const Teacher = mongoose.model("Teacher",new mongoose.Schema({
 
 module.exports = Teacher;
 
+
+//validation method for teacher
+function validateTeacher(body){
+    const complexity={min:6,max:20,upperCase:1,lowerCase:1,numeric:1,symbol:1};
+    const vschema = Joi.object({
+        email:Joi.string().required().email(),
+        password:jpc(complexity).required()
+    });
+    return vschema.validate(body);
+}
+
+
+exports.Teacher = Teacher;
+exports.validateTeacher = validateTeacher;
 
