@@ -38,7 +38,7 @@ async function addTeacher(body){
 async function sendMail(mailId){
     const userPresent = await Teacher.findOne({email:mailId}); //check teacher is already exists or not
     if(userPresent){
-        var tempPassword = randomPassword.generate({length:12,numbers:true,symbols:true});
+        var tempPassword = randomPassword.generate({length:6,numbers:true,symbols:true});
         console.log("Random generated password :"+tempPassword);
         var error = await nodemailerService(mailId,tempPassword);
         if(error){
