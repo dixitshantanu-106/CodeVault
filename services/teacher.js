@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-const {Teacher,validateTeacher} = require('../models/teacher_model');
+const Teacher = require('../models/teacher');
 const bcrypt = require('bcrypt');
+const Joi = require('joi');
+const jpc = require('joi-password-complexity');
  
 mongoose.connect('mongodb://localhost/codevault1')
     .then(()=>console.log('Connected to database..'))
@@ -27,13 +29,22 @@ async function encryptPassword(password){
     return encrypted;
 }
 
+//validation method for teacher
+function validateTeacher(body){
+    const complexity={min:6,max:20,upperCase:1,lowerCase:1,numeric:1,symbol:1};
+    const vschema = Joi.object({
+        email:Joi.string().required().email(),
+        password:jpc(complexity).required()
+    });
+    return vschema.validate(body);
+}
+
 //function to add new teacher into database
 async function addTeacher(body){
-            const hashedPassword = await encryptPassword(body.password); //get encrypted password
-            const teach = new Teacher({email:body.email,password:hashedPassword});
-            const result = await teach.save();
-            //console.log(result);
-            return result;
+    const hashedPassword = await encryptPassword(body.password); 
+    const teach = new Teacher({email:body.email,password:hashedPassword});
+    const result = await teach.save();
+    return result;
 }
 
 //function to send mail for forgot password

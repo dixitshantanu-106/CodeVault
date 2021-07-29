@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const {Teacher,validateTeacher} = require('../models/teacher_model');
+const {Teacher,validateTeacher} = require('../models/teacher');
 const router = express.Router();
 const {teacherCheck,encryptPassword, addTeacher} = require('../services/teacher');
 
