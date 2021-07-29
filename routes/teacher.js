@@ -9,14 +9,6 @@ mongoose.connect('mongodb://localhost/codevault1')
     .catch(error=>console.log(error));
 
 
-router.post('/',async(req,res)=>{
-    console.log("post method called");
-const {mongoose} = require('../app');
-const {Teacher,validateTeacher} = require('../models/teacher'); //get the teacher from model
-const router = express.Router();
-const {teacherCheck,encryptPassword, addTeacher,sendMail} = require('../services/teacher'); //get teacher from services
-const {validateForgot} = require('../models/otp');
-
 // mongoose.connect('mongodb://localhost/codevault1')
 //     .then(()=>console.log("connected to database"))
 //     .catch(error=>console.log(error));
