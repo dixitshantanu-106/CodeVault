@@ -21,8 +21,10 @@
     "bcrypt": "^5.0.1",
     "config": "^3.3.6",
     "express": "^4.17.1",
+    "generate-password": "^1.6.1",
     "joi": "^17.4.1",
     "joi-password-complexity": "^5.1.0",
-    "mongoose": "^5.13.3"
+    "mongoose": "^5.13.3",
+    "nodemailer": "^6.6.3"
   }
 }
