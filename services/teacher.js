@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const {Teacher,validateTeacher} = require('../models/teacher_model');
 const bcrypt = require('bcrypt');
  
-mongoose.connect('mongodb://localhost/codevault1')
-    .then(()=>console.log('Connected to database..'))
-    .catch(error=>console.log('Error while connecting to database '+error));
 
 //function to check whether teacher is alredy present or not
 const {mongoose} = require('../app');
