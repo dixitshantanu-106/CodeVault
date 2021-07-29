@@ -1,17 +1,10 @@
-const mongoose = require('mongoose');
 const Teacher = require('../models/teacher');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jpc = require('joi-password-complexity');
- 
-
-//function to check whether teacher is alredy present or not
-const {mongoose} = require('../app');
-const {Teacher,validateTeacher} = require('../models/teacher');
-const {Otp} = require('../models/otp');
-const bcrypt = require('bcrypt');
 const randomPassword = require('generate-password'); 
 
+//Checking if the mail is present in DB
 async function teacherCheck(emailId){
     const teacher = await Teacher.findOne({email:emailId}).count();
     if(teacher==0) {
@@ -27,9 +20,7 @@ async function teacherCheck(emailId){
 //function to encrypt the password of user to store into database
 async function encryptPassword(password){
     const salt = await bcrypt.genSalt(10);
-    const encrypted = await bcrypt.hash(password,salt);
-    console.log("Encrypted password "+encrypted);
-    return encrypted;
+    return await bcrypt.hash(password,salt);
 }
 
 //validation method for teacher
@@ -50,25 +41,26 @@ async function addTeacher(body){
     return result;
 }
 
+//function to check body of request
+function validateForgot(body){
+    const schema = Joi.object({
+        email:Joi.string().email().required()
+    });
+    return schema.validate(body);
+}
+
 //function to send mail for forgot password also create otp and store into Otp collection
 async function sendMail(mailId){
     const userPresent = await Teacher.findOne({email:mailId}); //check teacher is already exists or not
     if(userPresent){
-        var tempPassword = randomPassword.generate({length:6,numbers:true,symbols:true});
-        console.log("Random generated password :"+tempPassword);
-        var error = await nodemailerService(mailId,tempPassword);
-        if(error){
-            console.log("Email sent");
-            var encrypted = await encryptPassword(tempPassword);
-            userPresent.password = encrypted;
-            var updateResult = await userPresent.save();
+        let tempPassword = randomPassword.generate({length:6,numbers:true,symbols:true});
+        let result = await nodemailerService(mailId,tempPassword);
+        if(result){
+            userPresent.password = await encryptPassword(tempPassword);
+            await userPresent.save();
             return true;
-            //$2b$10$JpHDDkHUBiRTinyMeoDCX.6ynEayIbtBmjkcvAQh5Hxw9R6pxYbci
         }
-        else{
-            return false;
-        }
-  
+        else return false;
     }
     else{
         console.log("user is not present");
@@ -79,8 +71,8 @@ async function sendMail(mailId){
 //method to call nodemailer and send mail
 function nodemailerService(mail,newPassword){
     return new Promise((resolve,reject)=>{
-        var nodemailer = require('nodemailer');
-        var transporter = nodemailer.createTransport({
+        let nodemailer = require('nodemailer');
+        let transporter = nodemailer.createTransport({
             service:"gmail",
             port:587,
             secure:false,
@@ -90,9 +82,9 @@ function nodemailerService(mail,newPassword){
             }
         });
     
-        var message = "User your new password is "+newPassword+"\n\n\n\nPlease update your password after login";
+        let message = "User your new password is "+newPassword+"\n\n\n\nPlease update your password after login";
     
-        var mailOptions = {
+        let mailOptions = {
             from:"sameershinde5299@gmail.com",
             to:mail,
             subject:"CodeVault user forgot password",
@@ -110,13 +102,11 @@ function nodemailerService(mail,newPassword){
             }
         });
     });
-}
+};
 
-
-module.exports = {
-    teacherCheck,
-    encryptPassword,
-    addTeacher,
-    sendMail
-}
-
+exports.teacherCheck = teacherCheck;
+exports.encryptPassword = encryptPassword;
+exports.addTeacher = addTeacher;
+exports.sendMail = sendMail;
+exports.validateTeacher = validateTeacher;
+exports.validateForgot = validateForgot;
