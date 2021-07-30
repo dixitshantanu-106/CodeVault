@@ -7,8 +7,6 @@ const studentSchema = new mongoose.Schema({
     marks:{type:Number,default:0}
 });
 
-//creating student collection
-const Student = mongoose.model("Student",studentSchema);
 
 //creating examSchema
 const examSchema = new mongoose.Schema({
@@ -25,14 +23,11 @@ const examSchema = new mongoose.Schema({
     students:[studentSchema]
 });
 
-//creating Exam collection
-const Exam = mongoose.model("Exam",examSchema);
-
 //creating Teacher collection
 const Teacher = mongoose.model("Teacher",new mongoose.Schema({
     email:{type:String,require:true,unique:true},
     password:{type:String,require:true},
-    exams:[{type:mongoose.Schema.Types.ObjectId,ref:"Exam"}]
+    exams:[examSchema]
 }));
 
 module.exports = Teacher;

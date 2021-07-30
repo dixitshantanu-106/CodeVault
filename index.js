@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use('/teacher',teacher);
 
-mongoose.connect('mongodb://localhost/vidly', {
+mongoose.connect('mongodb://localhost/codevault1', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
