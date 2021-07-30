@@ -25,6 +25,7 @@
     "joi": "^17.4.1",
     "joi-password-complexity": "^5.1.0",
     "mongoose": "^5.13.3",
+    "mongoose-type-email": "^1.1.2",
     "nodemailer": "^6.6.3"
   }
 }

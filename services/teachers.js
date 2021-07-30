@@ -1,4 +1,4 @@
-const Teacher = require('../models/teacher');
+const Teacher = require('../models/teachers');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jpc = require('joi-password-complexity');
@@ -6,15 +6,9 @@ const randomPassword = require('generate-password');
 
 //Checking if the mail is present in DB
 async function teacherCheck(emailId){
-    const teacher = await Teacher.findOne({email:emailId}).count();
-    if(teacher==0) {
-        console.log("count is 0");
-        return true;
-    }
-    else{
-        console.log("count is not 0");
-        return false;
-    }
+    const teacher = await Teacher.findOne({email:emailId}).countDocuments();
+    if(teacher==0) return true;
+    else return false;
 }
 
 //function to encrypt the password of user to store into database
@@ -26,17 +20,18 @@ async function encryptPassword(password){
 //validation method for teacher
 function validateTeacher(body){
     const complexity={min:6,max:20,upperCase:1,lowerCase:1,numeric:1,symbol:1};
-    const vschema = Joi.object({
+    const schema = Joi.object({
         email:Joi.string().required().email(),
+        name: Joi.string().required().min(3).max(25),
         password:jpc(complexity).required()
     });
-    return vschema.validate(body);
+    return schema.validate(body);
 }
 
 //function to add new teacher into database
 async function addTeacher(body){
     const hashedPassword = await encryptPassword(body.password); 
-    const teach = new Teacher({email:body.email,password:hashedPassword});
+    const teach = new Teacher({name: body.name, email:body.email,password:hashedPassword});
     const result = await teach.save();
     return result;
 }
