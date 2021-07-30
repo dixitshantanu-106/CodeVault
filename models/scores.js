@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('mongoose-type-email');
 
 //creating studentSchema
 const scoreSchema = new mongoose.Schema({

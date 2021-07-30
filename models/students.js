@@ -3,7 +3,7 @@ require('mongoose-type-email');
 
 //creating studentSchema
 const studentSchema = new mongoose.Schema({
-    email: {type: mongoose.SchemaTypes.Email,require:true},
+    email: {type: mongoose.SchemaTypes.Email,require:true, unique:true},
     name: {type: String, require: true},
     class: {type: String, require: true}
 });

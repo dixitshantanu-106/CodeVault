@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('mongoose-type-email');
 
 const teacherSchema = new mongoose.Schema({
-    email:{type:String,require:true,unique:true},
+    email:{type:mongoose.SchemaTypes.Email,require:true,unique:true},
     password:{type:String,require:true},
     name: {type: String, require: true}
 });
