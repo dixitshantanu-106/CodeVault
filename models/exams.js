@@ -4,7 +4,7 @@ require('mongoose-type-email');
 //creating studentSchema
 const examSchema = new mongoose.Schema({
     ecode: {type: Number, require: true},
-    date: {type: Date, require: true},
+    date: {type: String, require: true},
     stime: {type: String, require: true},
     etime: {type: String, require: true},
     pLang: {type: String, require: true},

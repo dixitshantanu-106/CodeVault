@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const teacher = require('./routes/teachers');
+const exam = require('./routes/exams');
 const mongoose = require('mongoose');
 
 app.use(express.json());
-app.use('/codevault.com/teacher',teacher);
+app.use('/codevault.com/teachers',teacher);
+app.use('/codevault.com/exams',exam);
 
-mongoose.connect('mongodb://localhost/vidly', {
+mongoose.connect('mongodb://localhost/codeVaultTest1', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
