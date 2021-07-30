@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const teacher = require('./routes/teacher');
+const teacher = require('./routes/teachers');
 const mongoose = require('mongoose');
 
 app.use(express.json());
-app.use('/teacher',teacher);
+app.use('/codevault.com/teacher',teacher);
 
 mongoose.connect('mongodb://localhost/vidly', {
     useNewUrlParser: true,

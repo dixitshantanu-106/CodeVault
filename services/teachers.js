@@ -1,4 +1,4 @@
-const Teacher = require('../models/teacher');
+const Teacher = require('../models/teachers');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jpc = require('joi-password-complexity');

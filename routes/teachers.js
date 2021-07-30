@@ -1,7 +1,7 @@
 const express = require('express');
-const {validateTeacher} = require('../models/teacher');
+const {validateTeacher} = require('../models/teachers');
 const router = express.Router();
-const {teacherCheck, addTeacher} = require('../services/teacher');
+const {teacherCheck, addTeacher} = require('../services/teachers');
 
 //route to add the teacher
 router.post('/addteacher',async(req,res)=>{
