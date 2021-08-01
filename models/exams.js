@@ -14,7 +14,7 @@ const examSchema = new mongoose.Schema({
         input: {type: String, require: true},
         output: {type: String, require: true}
     }],
-    class :{type: String , require: true},
+    className :{type: String , require: true},
     tEmail: {type: mongoose.SchemaTypes.Email, require: true}
 });
 
