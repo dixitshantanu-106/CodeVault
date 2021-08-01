@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Score = require('../models/scores');
 const Joi = require('joi');
 
@@ -7,7 +6,7 @@ function validate(score) {
     const schema = Joi.object({
         ecode = Joi.number().required(),
         marks = Joi.number().required(),
-        date = Joi.string().require(),
+        date = Joi.string().required(),
         sEmail = Joi.string().email().required()
     });
 

@@ -1,24 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const {getScore, delScore, addScore, getScore, delGetValidate} = require('../services/scores');
+const {getScore, delScore, addScore, getScore} = require('../services/scores');
 
 // Fetch all the scores related to a particular student
 router.get('/:id', async (req, res) => {
-    const {error} = delGetValidate(req.body);
-    if (error) return res.status(400).send(error.details[0].message); 
-    const score = await getScore(req.body.sEmail);
+    const score = await getScore(req.params.id);
     if (!score) res.status(400).send('Exam with the specified ecode not available');
     res.status(200).send(score);
 })
 
+// Delete all the scores related to a particular student
 router.delete('/:id', async (req, res) => {
-    const {error} = delGetValidate(req.body);
-    if (error) return res.status(400).send(error.details[0].message); 
-    const score = await delScore(req.body.sEmail);
+    const score = await delScore(req.params.id);
     if (!score) res.status(400).send('Exam with the specified ecode not available');
     res.status(200).send(score);
 });
 
+// Add a score for a particular student
 router.post('/', async (req, res) => {
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message); 
