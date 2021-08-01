@@ -13,7 +13,7 @@ function validate(exam) {
         pLang: Joi.string().required().trim(),
         question: Joi.string().required().trim(),
         testCases: Joi.array().items(data),
-        class: Joi.string().min(2).max(15).required().trim(),
+        className: Joi.string().min(2).max(15).required().trim(),
         tEmail: Joi.string().email().required().trim()
     });
     return schema.validate(exam);
@@ -29,7 +29,7 @@ async function addExam(exam) {
         pLang: exam.pLang, 
         question: exam.question, 
         testCases: exam.testCases, 
-        class: exam.class, 
+        className: exam.class, 
         tEmail: exam.tEmail
     });
     return await newExam.save();
