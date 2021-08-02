@@ -10,10 +10,11 @@ const examSchema = new mongoose.Schema({
     pLang: {type: String, require: true},
     question: {type: String, require: true},
     testCases: [{
+        _id: false,
         input: {type: String, require: true},
         output: {type: String, require: true}
     }],
-    class :{type: String , require: true},
+    className :{type: String , require: true},
     tEmail: {type: mongoose.SchemaTypes.Email, require: true}
 });
 

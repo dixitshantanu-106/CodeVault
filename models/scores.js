@@ -4,8 +4,8 @@ require('mongoose-type-email');
 //creating studentSchema
 const scoreSchema = new mongoose.Schema({
     ecode: {type: Number, require: true},
-    score: {type: Number, require: true},
-    date: {type: Date, require: true},
+    marks: {type: Number, require: true},
+    date: {type: String , require: true},
     sEmail: {type: mongoose.SchemaTypes.Email,require:true},
 });
 
