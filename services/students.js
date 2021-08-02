@@ -1,4 +1,4 @@
-const Student = require('../models/scores');
+const Student = require('../models/students');
 const Joi = require('joi');
 
 function validate(student) {
@@ -23,15 +23,15 @@ async function addStud(student) {
 };
  
 async function getStud(sid, tid) {
-    return await Score.find({sEmail: sid, tEmail: tid});
+    return await Student.find({sEmail: sid, tEmail: tid});
 };
 
 async function getAllStud(tid) {
-    return await Score.find({tEmail: tid});
+    return await Student.find({tEmail: tid});
 };
 
 async function delStud(sid, tid) {
-    return await Score.remove({sEmail: sid, tEmail: tid}, {new: true});
+    return await Student.findOneAndRemove({sEmail: sid, tEmail: tid}, {new: true});
 };
 
 exports.validate = validate;
