@@ -26,6 +26,10 @@ async function getStud(sid, tid) {
     return await Score.find({sEmail: sid, tEmail: tid});
 };
 
+async function getAllStud(tid) {
+    return await Score.find({tEmail: tid});
+};
+
 async function delStud(sid, tid) {
     return await Score.remove({sEmail: sid, tEmail: tid}, {new: true});
 };
@@ -34,3 +38,4 @@ exports.validate = validate;
 exports.addStud = addStud;
 exports.getStud = getStud;
 exports.delStud = delStud;
+exports.getAllStud = getAllStud;

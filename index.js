@@ -9,8 +9,8 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use('/codevault.com/teachers', teacher);
 app.use('/codevault.com/exams', exam);
-app.use('/codevault.com/student', student);
-app.use('/codevault.com/score', score);
+app.use('/codevault.com/students', student);
+app.use('/codevault.com/scores', score);
 
 mongoose.connect('mongodb://localhost/codeVaultTest1', {
     useNewUrlParser: true,
