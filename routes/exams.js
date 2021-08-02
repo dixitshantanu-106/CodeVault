@@ -12,7 +12,7 @@ router.get('/all/:id', async (req, res) => {
 // To fetch exams with specified code, needs to be updated later
 router.get('/:id', async (req, res) => {
     const exam = await getExam(req.params.id);
-    if (!exam) return res.status(400).send('Exam with specified code not found');
+    if (!exam) return res.status(404).send('Exam with specified code not found');
     res.status(200).send(exam);
 })
 
@@ -27,14 +27,14 @@ router.post('/', async (req, res) => {
         req.body.ecode = temp.ecode + 1;
     }
     const exam = await addExam(req.body);
-    if (exam) res.status(200).send(exam);
-    else res.status(400).send('Something went wrong');
+    if (!exam) return res.status(404).send('Something went wrong');
+    res.status(200).send(exam);
 });
 
 // Delete the exam with specified ecode
 router.delete('/:id', async (req, res) => {
     const exam = await delExam(req.params.id);
-    if (!exam) res.status(400).send('Exam with the specified ecode not available');
+    if (!exam) return res.status(404).send('Exam with the specified ecode not available');
     res.status(200).send(movie)
 });
 
