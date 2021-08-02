@@ -4,17 +4,11 @@ const Joi = require('joi');
 
 function validate(score) {
     const schema = Joi.object({
-        ecode: Joi.number().required().trim(),
-        marks: Joi.number().required().trim(),
+        marks: Joi.number().required(),
         date: Joi.string().required().trim(),
         sEmail: Joi.string().email().required().trim()
     });
 
-    return schema.validate(score);
-};
-
-function delGetValidate(score) {
-    const schema = Joi.object({sEmail: Joi.string().email().required()});
     return schema.validate(score);
 };
 
@@ -33,11 +27,10 @@ async function getScore(id) {
 };
 
 async function delScore(id) {
-    return await Score.remove({sEmail: id}, {new: true});
+    return await Score.findOneAndRemove({sEmail: id}, {new: true});
 };
 
 exports.validate = validate;
 exports.addScore = addScore;
 exports.getScore = getScore;
 exports.delScore = delScore;
-exports.delGetValidate = delGetValidate;
