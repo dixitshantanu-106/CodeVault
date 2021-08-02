@@ -4,10 +4,10 @@ const Joi = require('joi');
 
 function validate(score) {
     const schema = Joi.object({
-        ecode = Joi.number().required(),
-        marks = Joi.number().required(),
-        date = Joi.string().required(),
-        sEmail = Joi.string().email().required()
+        ecode = Joi.number().required().trim(),
+        marks = Joi.number().required().trim(),
+        date = Joi.string().required().trim(),
+        sEmail = Joi.string().email().required().trim()
     });
 
     return schema.validate(score);

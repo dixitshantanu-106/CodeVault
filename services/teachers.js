@@ -21,9 +21,9 @@ async function encryptPassword(password){
 function validateTeacher(body){
     const complexity={min:6,max:20,upperCase:1,lowerCase:1,numeric:1,symbol:1};
     const schema = Joi.object({
-        email:Joi.string().required().email(),
-        name: Joi.string().required().min(3).max(25),
-        password:jpc(complexity).required()
+        email:Joi.string().required().email().trim(),
+        name: Joi.string().required().min(3).max(25).trim(),
+        password:jpc(complexity).required().trim()
     });
     return schema.validate(body);
 }
