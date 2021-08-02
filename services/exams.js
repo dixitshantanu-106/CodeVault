@@ -12,7 +12,7 @@ function validate(exam) {
         etime: Joi.string().required(),
         pLang: Joi.string().required(),
         question: Joi.string().required(),
-        testCases: Joi.array().items(data),
+        testCases: Joi.array().items(data).required(),
         class: Joi.string().min(2).max(15).required(),
         tEmail: Joi.string().email().required()
     });

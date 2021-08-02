@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jpc = require('joi-password-complexity');
 const randomPassword = require('generate-password'); 
+const jwt = require('jsonwebtoken');
 
 //Checking if the mail is present in DB
 async function teacherCheck(emailId){
@@ -27,6 +28,38 @@ function validateTeacher(body){
     });
     return schema.validate(body);
 }
+
+//validation method for user login
+function validateLogin(body){
+    const schema = Joi.object({
+        email:Joi.string().required().email().min(5).trim().email(),
+        password:Joi.string().required().min(5).trim()
+    });
+
+    return schema.validate(body);
+}
+
+//function to for login teacer
+async function loginTeacher(body){ 
+    const teacher = await Teacher.findOne({email:body.email});
+    console.log("Teacher present:"+teacher);
+    if(!teacher)
+    {
+        return false;
+    } 
+
+    const validPassword = await bcrypt.compare(body.password,teacher.password);
+    console.log("Passoword result:"+validPassword);
+    if(!validPassword) 
+    {
+        return false;
+    }
+
+    const token = jwt.sign({_id : teacher.email},"jsonPrivateKey");
+    console.log("Token:"+token);
+    return token;
+}
+
 
 //function to add new teacher into database
 async function addTeacher(body){
@@ -105,3 +138,5 @@ exports.addTeacher = addTeacher;
 exports.sendMail = sendMail;
 exports.validateTeacher = validateTeacher;
 exports.validateForgot = validateForgot;
+exports.loginTeacher = loginTeacher;
+exports.validateLogin = validateLogin;

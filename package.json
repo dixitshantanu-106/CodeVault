@@ -24,6 +24,7 @@
     "generate-password": "^1.6.1",
     "joi": "^17.4.1",
     "joi-password-complexity": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.3",
     "mongoose-type-email": "^1.1.2",
     "nodemailer": "^6.6.3"

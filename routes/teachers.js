@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {teacherCheck, addTeacher, validateTeacher, validateForgot, sendMail} = require('../services/teachers');
+const {teacherCheck, addTeacher, validateTeacher, validateForgot, sendMail,loginTeacher,validateLogin} = require('../services/teachers');
 
 //route to add the teacher
 router.post('/',async(req,res)=>{
@@ -14,14 +14,37 @@ router.post('/',async(req,res)=>{
     else return res.status(400).send("User linked to this email already exists.");
 });
 
+//route to login teacher
+router.post('/login',async(req,res)=>{
+    const {error} = validateLogin(req.body);
+    console.log(error);
+    if(error)
+    {
+        res.status(400).send(error.details[0].message);
+    } 
+    
+    let result = await loginTeacher(req.body);
+    if(result!=false){
+        res.header("x-auth-token",result).send("Login succeed..");
+    }
+    else{
+        res.status(400).send("Invalid email or password");
+    }
+})
+
 //route to forgot password 
 router.post('/forgotpassword',async(req,res)=>{
     const {error} = validateForgot(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
     const result = await sendMail(req.body.email);
-    if(result) return res.status(200).send("New password has sent on your mail");
-    return res.status(400).send("Please check your email..");
+
+    if(result != true){
+        return res.status(200).send("New password is sent through mail please update it latter");
+    }
+    else{
+        return res.status(400).send("Invalid email address");
+    }
 });
 
 
