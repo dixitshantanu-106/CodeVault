@@ -3,21 +3,21 @@ const Joi = require('joi');
 
 function validate(student) {
     const schema = Joi.object({
-        sEmail = Joi.string().email().required().trim(),
+        sEmail: Joi.string().email().required().trim(),
         name: Joi.string().required().trim(),
         className: Joi.string().required().trim(),
-        tEmail = Joi.string().email().required().trim()
+        tEmail: Joi.string().email().required().trim()
     });
 
     return schema.validate(student);
 };
 
 async function addStud(student) {
-    const tstudent  = new Student({
-        sEmail = student.sEmail,
-        name = student.name,
-        className = student.className,
-        tEmail = student.tEmail
+    const tstudent = new Student({
+        sEmail: student.sEmail,
+        name: student.name,
+        className: student.className,
+        tEmail: student.tEmail
     });
     return await tstudent.save();
 };

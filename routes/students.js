@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getStud, delStud, addStud, getStud} = require('../services/students');
+const {getStud, delStud, addStud} = require('../services/students');
 
 // Fetch all the scores related to a particular student
 router.get('/:sid/:tid', async (req, res) => {
