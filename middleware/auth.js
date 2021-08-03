@@ -6,7 +6,7 @@ async function auth(req,res,next){
 
     try{
         const decodedEmail = await jwt.verify(token,'jsonPrivateKey'); //this will return email store in payload if valid token
-        console.log("decodedEmail"+decodedEmail);
+        //console.log("decodedEmail"+decodedEmail);
         req.userEmail = decodedEmail;
         next();
     }

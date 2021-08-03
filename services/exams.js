@@ -13,7 +13,7 @@ function validate(exam) {
         pLang: Joi.string().required().trim(),
         question: Joi.string().required().trim(),
         testCases: Joi.array().items(data).required(),
-        className: Joi.string().min(2).max(15).required().trim(),
+        className: Joi.string().min(2).max(15).required().trim()
     });
     return schema.validate(exam);
 };
@@ -51,7 +51,7 @@ async function getCount() {
 
 //function to get maximum eCode
 async function getEcode() {
-    return  await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0});
+    return await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0});
 };
 
 //function to delete the exam with specified id
