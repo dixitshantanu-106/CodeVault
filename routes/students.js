@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getStud, delStud, addStud, getAllStud, validate} = require('../services/students');
+const {getStud, delStud, addStud, getAllStud, validate, studExists, addClass, addTeach, teachExists, classExits} = require('../services/students');
 
 
 router.get('/:tid', async (req, res) => {
@@ -26,6 +26,11 @@ router.delete('/:sid/:tid', async (req, res) => {
 router.post('/', async (req, res) => {
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message); 
+    if (await studExists(req.body.sEmail)) {
+        if (! await teachExists(req.body.sEmail, req.body.tEmail)) await addTeach(req.body.sEmail, req.body.tEmail);
+        if (! await classExits(req.body.sEmail, req.body.className)) await addClass(req.body.sEmail, req.body.className);
+        return res.status(200).send("Data added in existing doc"); 
+    }
     const student = await addStud(req.body);
     if (!student) return res.status(404).send('Something went wrong');
     res.status(200).send(student);
