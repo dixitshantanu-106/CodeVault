@@ -33,7 +33,7 @@ function validateTeacher(body){
 function validateLogin(body){
     const schema = Joi.object({
         email:Joi.string().required().email().min(5).trim().email(),
-        password:Joi.string().required().min(5).trim()
+        password:Joi.string().required().min(6).trim()
     });
 
     return schema.validate(body);

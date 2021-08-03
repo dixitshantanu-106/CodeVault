@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('mongoose-type-email');
 
+
 //creating studentSchema
 const examSchema = new mongoose.Schema({
     ecode: {type: Number, require: true},

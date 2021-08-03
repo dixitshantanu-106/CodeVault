@@ -12,9 +12,8 @@ function validate(exam) {
         etime: Joi.string().required().trim(),
         pLang: Joi.string().required().trim(),
         question: Joi.string().required().trim(),
-        testCases: Joi.array().items(data),
+        testCases: Joi.array().items(data).required(),
         className: Joi.string().min(2).max(15).required().trim(),
-        tEmail: Joi.string().email().required().trim()
     });
     return schema.validate(exam);
 };
@@ -24,7 +23,7 @@ async function addExam(exam) {
     const newExam = new Exam({
         ecode: exam.ecode, 
         date: exam.date, 
-        stime: exam.stime, 
+        stime: exam.stime,  
         etime: exam.etime, 
         pLang: exam.pLang, 
         question: exam.question, 
@@ -45,22 +44,27 @@ async function getExam(tid, code) {
     return await Exam.find({tEmail: tid, ecode: code});
 };
 
+//get total number of records in Exam colletion use for setting initial eCode value
 async function getCount() {
     return await Exam.countDocuments();
 }
 
+//function to get maximum eCode
 async function getEcode() {
-    return await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0})
+    return  await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0});
 };
 
+//function to delete the exam with specified id
 async function delExam(id) {
-    return await Exam.remove({ecode: id}, {new: true});
+    return await Exam.findOneAndRemove({ecode: id}, {new: true});
 };
 
+
+//exporting modules
 exports.validate = validate;
 exports.addExam = addExam;
 exports.getAllExams = getAllExams;
 exports.getExam = getExam;
 exports.getCount = getCount;
 exports.getEcode = getEcode;
-exports.addExam.delExam = delExam;
+exports.delExam = delExam;
