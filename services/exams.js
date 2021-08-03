@@ -54,7 +54,7 @@ async function getEcode() {
 };
 
 async function delExam(id) {
-    return await Exam.remove({ecode: id}, {new: true});
+    return await Exam.findOneAndRemove({ecode: id}, {new: true});
 };
 
 exports.validate = validate;
@@ -63,4 +63,4 @@ exports.getAllExams = getAllExams;
 exports.getExam = getExam;
 exports.getCount = getCount;
 exports.getEcode = getEcode;
-exports.addExam.delExam = delExam;
+exports.delExam = delExam;
