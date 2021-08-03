@@ -51,7 +51,11 @@ async function getCount() {
 
 //function to get maximum eCode
 async function getEcode() {
+<<<<<<< HEAD
     return  await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0});
+=======
+    return await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0}).exec()
+>>>>>>> origin/development
 };
 
 //function to delete the exam with specified id
