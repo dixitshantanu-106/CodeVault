@@ -12,4 +12,5 @@ const studentSchema = new mongoose.Schema({
 //creating student collection
 const Student = mongoose.model("Student",studentSchema);
 
-module.exports = Student;
+//export the student Colletion object
+module.exports = Student; 

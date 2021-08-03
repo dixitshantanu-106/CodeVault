@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const {getStud, delStud, addStud, getAllStud, validate} = require('../services/students');
+const {auth} = require('../middleware/auth');
 
-
+ 
 router.get('/:tid', async (req, res) => {
     const student = await getAllStud(req.params.tid);
     if (!student) return res.status(404).send('Student with the specified info not available');
@@ -23,9 +24,10 @@ router.delete('/:sid/:tid', async (req, res) => {
 });
 
 // Add a score for a particular student
-router.post('/', async (req, res) => {
+router.post('/', auth , async (req, res) => {
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message); 
+    req.body.tEmail = req.userEmail._id; //getting the email from token 
     const student = await addStud(req.body);
     if (!student) return res.status(404).send('Something went wrong');
     res.status(200).send(student);
