@@ -12,7 +12,7 @@ function validate(exam) {
         etime: Joi.string().required().trim(),
         pLang: Joi.string().required().trim(),
         question: Joi.string().required().trim(),
-        testCases: Joi.array().items(data),
+        testCases: Joi.array().items(data).required(),
         className: Joi.string().min(2).max(15).required().trim(),
         tEmail: Joi.string().email().required().trim()
     });
@@ -50,11 +50,11 @@ async function getCount() {
 }
 
 async function getEcode() {
-    return await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0})
+    return await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0}).exec()
 };
 
 async function delExam(id) {
-    return await Exam.remove({ecode: id}, {new: true});
+    return await Exam.findOneAndRemove({ecode: id}, {new: true});
 };
 
 exports.validate = validate;
@@ -63,4 +63,4 @@ exports.getAllExams = getAllExams;
 exports.getExam = getExam;
 exports.getCount = getCount;
 exports.getEcode = getEcode;
-exports.addExam.delExam = delExam;
+exports.delExam = delExam;

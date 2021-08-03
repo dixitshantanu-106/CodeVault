@@ -5,8 +5,8 @@ require('mongoose-type-email');
 const studentSchema = new mongoose.Schema({
     sEmail: {type: mongoose.SchemaTypes.Email,require:true},
     name: {type: String, require: true},
-    className: {type: String, require: true},
-    tEmail: {type: mongoose.SchemaTypes.Email,require:true}
+    className: [{type: String, require: true}],
+    tEmail: [{type: mongoose.SchemaTypes.Email,require:true}]
 });
 
 //creating student collection
