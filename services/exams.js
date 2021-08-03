@@ -40,7 +40,7 @@ async function getAllExams(id) {
     return await Exam.find({tEmail: id});
 };
 
-// To fetch exams with specified code, needs to be updated later
+// To fetch all the exams from DB created by a specific teacher with a specific ecode
 async function getExam(tid, code) {
     return await Exam.find({tEmail: tid, ecode: code});
 };
@@ -49,6 +49,7 @@ async function getCount() {
     return await Exam.countDocuments();
 }
 
+// Get ecode for new exam
 async function getEcode() {
     return await Exam.findOne({}).sort({_id:-1}).limit(1).select({ ecode: 1, _id: 0}).exec()
 };
