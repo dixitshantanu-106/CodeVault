@@ -5,12 +5,8 @@ function validate(student) {
     const schema = Joi.object({
         sEmail: Joi.string().email().required().trim(),
         name: Joi.string().required().trim(),
-<<<<<<< HEAD
         className: Joi.string().required().trim()
         // tEmail: Joi.string().email().required().trim()
-=======
-        className: Joi.array().items(Joi.string().required().trim())
->>>>>>> origin/dev_sameer
     });
 
     return schema.validate(student);
