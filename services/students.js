@@ -23,12 +23,27 @@ async function addStud(student) {
     return await tstudent.save();
 };
  
-//get the specified student details
+// Get a student related to a particular teacher
 async function getStud(sid, tid) {
     return await Student.find({sEmail: sid, tEmail: tid});
 };
- 
-//get all students of perticular teacher
+
+// Check if a student with a particular mail already exists
+async function studExists(sid) {
+    return await Student.exists({sEmail: sid});
+};
+
+// Check if a student with a particular mail has a specified class
+async function classExits(sid, name) {
+    return await Student.exists({sEmail: sid, className: name});
+};
+
+// Check if a student with a particular mail has a specified teacher
+async function teachExists(sid, tid) {
+    return await Student.exists({sEmail: sid, tEmail: tid});
+};
+
+// Get all students related to a specific teacher
 async function getAllStud(tid) {
     return await Student.find({tEmail: tid});
 };
@@ -38,9 +53,25 @@ async function delStud(sid, tid) {
     return await Student.findOneAndRemove({sEmail: sid, tEmail: tid}, {new: true});
 };
 
-//export the function for student.js in route
+// Add teacher to an existing doc
+async function addTeach(sid, tid) {
+    await Student.findOneAndUpdate({sEmail: sid}, {$push: {tEmail: tid}});
+    return true;
+};
+
+// Add class to an existing doc
+async function addClass(sid, name) {
+    await Student.findOneAndUpdate({sEmail: sid}, {$push: {className: name}});
+    return true;
+};
+
 exports.validate = validate;
 exports.addStud = addStud;
 exports.getStud = getStud;
 exports.delStud = delStud;
 exports.getAllStud = getAllStud;
+exports.studExists = studExists;
+exports.teachExists = teachExists;
+exports.classExits = classExits;
+exports.addClass = addClass;
+exports.addTeach = addTeach;
