@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {teacherCheck, addTeacher, validateTeacher, validateForgot, sendMail,loginTeacher,validateLogin} = require('../services/teachers');
+const asyncMiddleware = require('../middleware/async');
+const log = require('../middleware/logmiddleware.');
 
 //route to add the teacher
 router.post('/',async(req,res)=>{
@@ -17,14 +19,15 @@ router.post('/',async(req,res)=>{
 //route to login teacher
 router.post('/login',async(req,res)=>{
     const {error} = validateLogin(req.body);
-    console.log(error);
     if(error)
     {
+        log.info(`Login failed`);
         res.status(400).send(error.details[0].message);
     } 
     
     let result = await loginTeacher(req.body);
     if(result!=false){
+        log.info(`login succeed`);
         res.header("x-auth-token",result).send("Login succeed..");
     }
     else{

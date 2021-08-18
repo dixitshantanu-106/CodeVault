@@ -55,7 +55,7 @@ async function loginTeacher(body){
         return false;
     }
 
-    const token = jwt.sign({_id : teacher.email},"jsonPrivateKey");
+    const token = jwt.sign({email : teacher.email},"jsonPrivateKey");
     console.log("Token:"+token);
     return token;
 }

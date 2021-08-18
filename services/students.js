@@ -25,7 +25,7 @@ async function addStud(student) {
  
 // Get a student related to a particular teacher
 async function getStud(sid, tid) {
-    return await Student.find({sEmail: sid, tEmail: tid});
+    return await Student.find({sEmail: sid, tEmail: tid},{tEmail:0 });
 };
 
 // Check if a student with a particular mail already exists
@@ -45,7 +45,7 @@ async function teachExists(sid, tid) {
 
 // Get all students related to a specific teacher
 async function getAllStud(tid) {
-    return await Student.find({tEmail: tid});
+    return await Student.find({tEmail: tid},{tEmail:0});
 };
 
 //delete the student with his email

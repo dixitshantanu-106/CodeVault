@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {getScore, delScore, addScore, validate} = require('../services/scores');
-
+ 
 // Fetch all the scores related to a particular student
 router.get('/:id', async (req, res) => {
     const score = await getScore(req.params.id);
