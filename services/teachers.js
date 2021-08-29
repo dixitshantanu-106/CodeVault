@@ -75,7 +75,7 @@ function validateForgot(body){
         email:Joi.string().email().required()
     });
     return schema.validate(body);
-}
+} 
 
 //function to send mail for forgot password also create otp and store into Otp collection
 async function sendMail(mailId){

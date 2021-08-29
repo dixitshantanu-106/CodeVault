@@ -25,7 +25,7 @@ router.post('/', auth ,async (req, res) => {
     const count = await getCount();
     if (count == 0) req.body.ecode = 100001; //setting initial value for the ecode
     else {
-        let temp = await getEcode();
+        let temp = await getEcode(); 
         req.body.ecode = temp.ecode + 1;
     }
     req.body.tEmail = req.userEmail.email; //setting teacher email by fetching value set in middleware function 

@@ -5,7 +5,8 @@ const asyncMiddleware = require('../middleware/async');
 const log = require('../middleware/logmiddleware.');
 
 //route to add the teacher
-router.post('/',async(req,res)=>{
+router.post('/',async(req,res)=>{ 
+    console.log("called teacher add teacher route");
     const {error} = validateTeacher(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     let result = await teacherCheck(req.body.email);
@@ -13,7 +14,7 @@ router.post('/',async(req,res)=>{
         const teacher = await addTeacher(req.body);
         res.status(200).send("Teacher added:"+teacher);
     }
-    else return res.status(400).send("User linked to this email already exists.");
+    else return res.status(422).send("User linked to this email already exists.");
 });
 
 //route to login teacher

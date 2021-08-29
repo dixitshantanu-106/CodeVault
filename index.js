@@ -27,4 +27,4 @@ mongoose.connect('mongodb://localhost/codeVaultTest1', {
     .then(()=>logger.info('connected to database'))
     .catch(error=>logger.error("Error while connecting to database\n"+error));
 
-app.listen(3000,()=>logger.warn("Starting server at port 3k"));
+app.listen(5000,()=>{logger.info("Starting server at port 5k");console.log("Server started at port 5k");});
