@@ -38,6 +38,7 @@ const Register = ()=>{
                 name,email,password
             })
         });
+        console.log("Result return by post method:"+res);
         window.alert("On line no 41:"+res.status);
         //get the status return by route
         const data = await res.json;

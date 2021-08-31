@@ -28,7 +28,7 @@ async function addExam(exam) {
         pLang: exam.pLang, 
         question: exam.question, 
         testCases: exam.testCases, 
-        className: exam.class, 
+        className: exam.className, 
         tEmail: exam.tEmail
     });
     return await newExam.save();

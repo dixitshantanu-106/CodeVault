@@ -6,7 +6,7 @@ const {auth} = require('../middleware/auth');
 
 // Fetch all the students related to a particular teacher
 router.get('/', auth ,async (req, res) => {
-    throw new Error("Could not get the students");
+    // throw new Error("Could not get the students");
     const student = await getAllStud(req.userEmail.email);
     if (!student) return res.status(404).send('Student with the specified info not available');
     res.status(200).send(student);

@@ -6,6 +6,7 @@ require('mongoose-type-email');
 const examSchema = new mongoose.Schema({
     ecode: {type: Number, require: true},
     date: {type: String, require: true},
+    className :{type: String , require: true},
     stime: {type: String, require: true},
     etime: {type: String, require: true},
     pLang: {type: String, require: true},
@@ -15,7 +16,6 @@ const examSchema = new mongoose.Schema({
         input: {type: String, require: true},
         output: {type: String, require: true}
     }],
-    className :{type: String , require: true},
     tEmail: {type: mongoose.SchemaTypes.Email, require: true}
 });
 
