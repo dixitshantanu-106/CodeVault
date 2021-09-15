@@ -1,7 +1,8 @@
 /* This file is use for checking the token passed is valid or not for teacher */
 const jwt = require('jsonwebtoken');
 async function auth(req,res,next){
-    const token = req.header('x-auth-header');
+    console.log("called the auth fucntion in auth.js");
+    const token = req.header('xauthheader');
     if(!token) return res.status(401).send("Access denied. NO token found."); //if no token provided
 
     try{

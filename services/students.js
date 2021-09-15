@@ -9,8 +9,9 @@ function validate(student) {
         // tEmail: Joi.string().email().required().trim()
     });
 
-    return schema.validate(student);
+    return schema.validate(student); 
 };
+
 
 //function to add Student
 async function addStud(student) {
@@ -42,7 +43,7 @@ async function classExits(sid, name) {
 async function teachExists(sid, tid) {
     return await Student.exists({sEmail: sid, tEmail: tid});
 };
-
+ 
 // Get all students related to a specific teacher
 async function getAllStud(tid) {
     return await Student.find({tEmail: tid},{tEmail:0});
@@ -65,6 +66,13 @@ async function addClass(sid, name) {
     return true;
 };
 
+
+//method to return class name list under teacher
+async function getClassList(email){
+    //console.log("in getClassList method");
+    return await Student.distinct("className",{"tEmail":email});//get distinct className create by teacher
+}
+
 exports.validate = validate;
 exports.addStud = addStud;
 exports.getStud = getStud;
@@ -75,3 +83,4 @@ exports.teachExists = teachExists;
 exports.classExits = classExits;
 exports.addClass = addClass;
 exports.addTeach = addTeach;
+exports.getClassList = getClassList;

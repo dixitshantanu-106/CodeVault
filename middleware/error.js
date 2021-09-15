@@ -14,6 +14,7 @@ const log = require('./logmiddleware.');
 
 
  function error(err,req,res,next){
+     console.log(err);
     log.error(err.message);//causing error
     res.status(500).send("Something failed..");
 }

@@ -23,18 +23,18 @@ router.post('/login',async(req,res)=>{
     if(error)
     {
         log.info(`Login failed`);
-        res.status(400).send(error.details[0].message);
+        res.status(422).send(error.details[0].message);
     } 
     
     let result = await loginTeacher(req.body);
     if(result!=false){
         log.info(`login succeed`);
-        res.header("x-auth-token",result).send("Login succeed..");
+        res.header("xauthheader",result).send("Login succeed..");
     }
     else{
         res.status(400).send("Invalid email or password");
     }
-})
+}) 
 
 //route to forgot password 
 router.post('/forgotpassword',async(req,res)=>{
@@ -42,8 +42,8 @@ router.post('/forgotpassword',async(req,res)=>{
     if(error) return res.status(400).send(error.details[0].message);
 
     const result = await sendMail(req.body.email);
-
-    if(result != true){
+    if(result == true){
+        log.info(`password reset`);
         return res.status(200).send("New password is sent through mail please update it latter");
     }
     else{

@@ -1,4 +1,5 @@
 const Teacher = require('../models/teachers');
+const Student = require('../models/students');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jpc = require('joi-password-complexity');
@@ -81,8 +82,9 @@ function validateForgot(body){
 async function sendMail(mailId){
     const userPresent = await Teacher.findOne({email:mailId}); //check teacher is already exists or not
     if(userPresent){
-        let tempPassword = randomPassword.generate({length:6,numbers:true,symbols:true});
+        let tempPassword = randomPassword.generate({length:8,numbers:true,symbols:true,lowercase:true,uppercase:true});
         let result = await nodemailerService(mailId,tempPassword);
+        console.log("nodemailService:"+result);
         if(result){
             userPresent.password = await encryptPassword(tempPassword);
             await userPresent.save();
@@ -98,12 +100,13 @@ async function sendMail(mailId){
 
 //method to call nodemailer and send mail
 function nodemailerService(mail,newPassword){
+    console.log("In nodemailer");
     return new Promise((resolve,reject)=>{
         let nodemailer = require('nodemailer');
         let transporter = nodemailer.createTransport({
             service:"gmail",
             port:587,
-            secure:false,
+            secure:false, 
             auth:{
                 user:"sameershinde5299@gmail.com",
                 pass:"fbwhatsapp"
