@@ -29,5 +29,9 @@ async function addTest(test) {
 }
 
 async function delTest(test) {
-    
+    // return await Test.findOneAndRemove({etime: })
 }
+
+exports.validate = validate;
+exports.addTest = addTest;
+exports.delTest = delTest;
