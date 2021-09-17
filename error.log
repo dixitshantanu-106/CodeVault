@@ -671,3 +671,36 @@ info: Sep-11-2021 00:56:18: 	Starting server at port 5k
 info: Sep-11-2021 00:56:18: 	connected to database
 info: Sep-11-2021 00:57:06: 	Starting server at port 5k
 info: Sep-11-2021 00:57:06: 	connected to database
+info: Sep-17-2021 15:09:54: 	Starting server at port 5k
+error: Sep-17-2021 15:10:25: 	Error while connecting to database
+MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+info: Sep-17-2021 15:10:35: 	Starting server at port 5k
+info: Sep-17-2021 15:10:35: 	connected to database
+info: Sep-17-2021 15:11:07: 	Starting server at port 5k
+info: Sep-17-2021 15:11:07: 	connected to database
+info: Sep-17-2021 15:15:31: 	Starting server at port 5k
+info: Sep-17-2021 15:15:31: 	connected to database
+info: Sep-17-2021 15:16:20: 	Starting server at port 5k
+info: Sep-17-2021 15:16:20: 	connected to database
+info: Sep-17-2021 15:16:43: 	Starting server at port 5k
+info: Sep-17-2021 15:16:43: 	connected to database
+info: Sep-17-2021 15:19:35: 	Starting server at port 5k
+info: Sep-17-2021 15:19:36: 	connected to database
+info: Sep-17-2021 15:38:37: 	Starting server at port 5k
+info: Sep-17-2021 15:38:37: 	connected to database
+info: Sep-17-2021 15:40:57: 	Starting server at port 5k
+info: Sep-17-2021 15:40:57: 	connected to database
+info: Sep-17-2021 15:41:16: 	Starting server at port 5k
+info: Sep-17-2021 15:41:16: 	connected to database
+info: Sep-17-2021 15:41:27: 	Starting server at port 5k
+info: Sep-17-2021 15:41:27: 	connected to database
+info: Sep-17-2021 15:43:38: 	Starting server at port 5k
+info: Sep-17-2021 15:43:38: 	connected to database
+info: Sep-17-2021 15:44:07: 	Starting server at port 5k
+info: Sep-17-2021 15:44:07: 	connected to database
+info: Sep-17-2021 15:44:58: 	Starting server at port 5k
+info: Sep-17-2021 15:44:58: 	connected to database
+info: Sep-17-2021 15:45:10: 	Starting server at port 5k
+info: Sep-17-2021 15:45:10: 	connected to database
+info: Sep-17-2021 15:45:11: 	Starting server at port 5k
+info: Sep-17-2021 15:45:12: 	connected to database

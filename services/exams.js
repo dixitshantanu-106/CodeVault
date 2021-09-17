@@ -59,7 +59,6 @@ async function delExam(id) {
     return await Exam.findOneAndRemove({ecode: id}, {new: true});
 };
 
-
 //exporting modules
 exports.validate = validate;
 exports.addExam = addExam;
