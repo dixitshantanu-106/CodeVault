@@ -21,14 +21,14 @@ router.get('/class', auth , async (req, res) => {
 });
  
 // Fetch a particular student related to a particular teacher
-router.get('/:sid', auth , async (req, res) => {
+router.get('/:sid', auth, async (req, res) => {
     const student = await getStud(req.params.sid, req.userEmail.email);
     if (!student) return res.status(404).send('Student with the specified info not available');
     res.status(200).send(student);
 });
 
 // Delete all the scores related to a particular student
-router.delete('/:sid', async (req, res) => {
+router.delete('/:sid', auth, async (req, res) => {
     const student = await delStud(req.params.sid, req.userEmail.email); //get teacher email from token
     if (!student) return res.status(404).send('Student with the specified info not available');
     res.status(200).send(student);

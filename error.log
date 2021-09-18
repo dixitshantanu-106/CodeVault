@@ -714,3 +714,148 @@ info: Sep-17-2021 15:51:22: 	Starting server at port 5k
 info: Sep-17-2021 15:51:22: 	connected to database
 info: Sep-17-2021 22:45:46: 	Starting server at port 5k
 info: Sep-17-2021 22:45:46: 	connected to database
+info: Sep-18-2021 10:00:32: 	Starting server at port 5k
+info: Sep-18-2021 10:00:32: 	connected to database
+info: Sep-18-2021 10:31:48: 	login succeed
+info: Sep-18-2021 10:36:21: 	login succeed
+error: Sep-18-2021 10:38:43: 	Cannot read property 'email' of undefined
+error: Sep-18-2021 10:48:54: 	Cannot read property 'email' of undefined
+info: Sep-18-2021 10:49:14: 	login succeed
+error: Sep-18-2021 10:52:14: 	Cannot read property 'email' of undefined
+error: Sep-18-2021 10:57:30: 	Cannot read property 'email' of undefined
+error: Sep-18-2021 10:59:57: 	Cannot read property 'email' of undefined
+info: Sep-18-2021 11:05:43: 	Starting server at port 5k
+info: Sep-18-2021 11:05:43: 	connected to database
+error: Sep-18-2021 11:06:02: 	FieldPath field names may not start with '$'.
+error: Sep-18-2021 11:06:43: 	FieldPath field names may not start with '$'.
+info: Sep-18-2021 11:07:06: 	Starting server at port 5k
+info: Sep-18-2021 11:07:06: 	connected to database
+error: Sep-18-2021 11:07:08: 	Unknown expression $exists
+info: Sep-18-2021 11:08:11: 	Starting server at port 5k
+info: Sep-18-2021 11:08:11: 	connected to database
+info: Sep-18-2021 11:10:37: 	Starting server at port 5k
+info: Sep-18-2021 11:10:37: 	connected to database
+error: Sep-18-2021 11:11:00: 	unknown top level operator: $not
+info: Sep-18-2021 11:12:06: 	Starting server at port 5k
+info: Sep-18-2021 11:12:06: 	connected to database
+info: Sep-18-2021 11:12:20: 	Starting server at port 5k
+info: Sep-18-2021 11:12:20: 	connected to database
+info: Sep-18-2021 11:12:46: 	Starting server at port 5k
+info: Sep-18-2021 11:12:46: 	connected to database
+error: Sep-18-2021 11:12:47: 	unknown top level operator: $ne
+info: Sep-18-2021 11:13:13: 	Starting server at port 5k
+info: Sep-18-2021 11:13:13: 	connected to database
+info: Sep-18-2021 11:15:13: 	Starting server at port 5k
+info: Sep-18-2021 11:15:13: 	connected to database
+error: Sep-18-2021 11:16:14: 	conditional $and requires an array
+info: Sep-18-2021 11:16:48: 	Starting server at port 5k
+info: Sep-18-2021 11:16:48: 	connected to database
+info: Sep-18-2021 11:17:26: 	Starting server at port 5k
+info: Sep-18-2021 11:17:26: 	connected to database
+info: Sep-18-2021 11:20:00: 	Starting server at port 5k
+info: Sep-18-2021 11:20:00: 	connected to database
+info: Sep-18-2021 11:21:45: 	Starting server at port 5k
+info: Sep-18-2021 11:21:45: 	connected to database
+error: Sep-18-2021 11:22:16: 	The expression evaluated to a falsy value:
+
+  assert.ok(!isNaN(val))
+
+error: Sep-18-2021 11:23:46: 	The expression evaluated to a falsy value:
+
+  assert.ok(!isNaN(val))
+
+info: Sep-18-2021 11:24:51: 	Starting server at port 5k
+info: Sep-18-2021 11:24:51: 	connected to database
+info: Sep-18-2021 11:26:12: 	Starting server at port 5k
+info: Sep-18-2021 11:26:12: 	connected to database
+info: Sep-18-2021 11:26:14: 	Starting server at port 5k
+info: Sep-18-2021 11:26:14: 	connected to database
+info: Sep-18-2021 11:35:11: 	Starting server at port 5k
+info: Sep-18-2021 11:35:11: 	connected to database
+info: Sep-18-2021 11:35:14: 	login succeed
+info: Sep-18-2021 11:35:49: 	Starting server at port 5k
+info: Sep-18-2021 11:35:49: 	connected to database
+info: Sep-18-2021 11:37:17: 	Starting server at port 5k
+info: Sep-18-2021 11:37:18: 	connected to database
+info: Sep-18-2021 11:37:18: 	Starting server at port 5k
+info: Sep-18-2021 11:37:19: 	connected to database
+info: Sep-18-2021 11:37:39: 	Starting server at port 5k
+info: Sep-18-2021 11:37:39: 	connected to database
+info: Sep-18-2021 11:37:52: 	Starting server at port 5k
+info: Sep-18-2021 11:37:52: 	connected to database
+info: Sep-18-2021 11:38:06: 	Starting server at port 5k
+info: Sep-18-2021 11:38:06: 	connected to database
+info: Sep-18-2021 11:38:55: 	Starting server at port 5k
+info: Sep-18-2021 11:38:55: 	connected to database
+info: Sep-18-2021 11:39:16: 	Starting server at port 5k
+info: Sep-18-2021 11:39:16: 	connected to database
+info: Sep-18-2021 11:42:13: 	Starting server at port 5k
+info: Sep-18-2021 11:42:13: 	connected to database
+info: Sep-18-2021 11:42:24: 	Starting server at port 5k
+info: Sep-18-2021 11:42:24: 	connected to database
+error: Sep-18-2021 11:42:29: 	The expression evaluated to a falsy value:
+
+  assert.ok(!isNaN(val))
+
+info: Sep-18-2021 11:42:42: 	Starting server at port 5k
+info: Sep-18-2021 11:42:42: 	connected to database
+info: Sep-18-2021 11:47:05: 	Starting server at port 5k
+info: Sep-18-2021 11:47:05: 	connected to database
+info: Sep-18-2021 11:47:56: 	Starting server at port 5k
+info: Sep-18-2021 11:47:56: 	connected to database
+info: Sep-18-2021 11:50:17: 	Starting server at port 5k
+info: Sep-18-2021 11:50:17: 	connected to database
+info: Sep-18-2021 11:50:48: 	Starting server at port 5k
+info: Sep-18-2021 11:50:48: 	connected to database
+info: Sep-18-2021 11:50:51: 	Starting server at port 5k
+info: Sep-18-2021 11:50:51: 	connected to database
+error: Sep-18-2021 11:50:55: 	tEmail is not defined
+info: Sep-18-2021 11:51:02: 	Starting server at port 5k
+info: Sep-18-2021 11:51:02: 	connected to database
+error: Sep-18-2021 11:51:03: 	Mongoose 5.x disallows passing a spread of operators to `Model.aggregate()`. Instead of `Model.aggregate({ $match }, { $skip })`, do `Model.aggregate([{ $match }, { $skip }])`
+info: Sep-18-2021 11:51:34: 	Starting server at port 5k
+info: Sep-18-2021 11:51:34: 	connected to database
+info: Sep-18-2021 11:51:36: 	Starting server at port 5k
+info: Sep-18-2021 11:51:36: 	connected to database
+error: Sep-18-2021 11:51:36: 	Arguments must be aggregate pipeline operators
+info: Sep-18-2021 11:51:57: 	Starting server at port 5k
+info: Sep-18-2021 11:51:57: 	connected to database
+info: Sep-18-2021 11:52:03: 	Starting server at port 5k
+info: Sep-18-2021 11:52:03: 	connected to database
+error: Sep-18-2021 11:52:03: 	Mongoose 5.x disallows passing a spread of operators to `Model.aggregate()`. Instead of `Model.aggregate({ $match }, { $skip })`, do `Model.aggregate([{ $match }, { $skip }])`
+info: Sep-18-2021 11:52:31: 	Starting server at port 5k
+info: Sep-18-2021 11:52:31: 	connected to database
+info: Sep-18-2021 11:53:34: 	Starting server at port 5k
+info: Sep-18-2021 11:53:34: 	connected to database
+info: Sep-18-2021 11:55:10: 	Starting server at port 5k
+info: Sep-18-2021 11:55:10: 	connected to database
+info: Sep-18-2021 11:57:11: 	Starting server at port 5k
+info: Sep-18-2021 11:57:11: 	connected to database
+info: Sep-18-2021 11:58:24: 	Starting server at port 5k
+info: Sep-18-2021 11:58:24: 	connected to database
+info: Sep-18-2021 12:00:23: 	Starting server at port 5k
+info: Sep-18-2021 12:00:23: 	connected to database
+info: Sep-18-2021 12:01:22: 	Starting server at port 5k
+info: Sep-18-2021 12:01:22: 	connected to database
+info: Sep-18-2021 12:05:12: 	Starting server at port 5k
+info: Sep-18-2021 12:05:12: 	connected to database
+info: Sep-18-2021 12:06:39: 	Starting server at port 5k
+info: Sep-18-2021 12:06:39: 	connected to database
+info: Sep-18-2021 12:07:52: 	Starting server at port 5k
+info: Sep-18-2021 12:07:52: 	connected to database
+info: Sep-18-2021 12:08:06: 	Starting server at port 5k
+info: Sep-18-2021 12:08:06: 	connected to database
+info: Sep-18-2021 12:09:06: 	Starting server at port 5k
+info: Sep-18-2021 12:09:06: 	connected to database
+error: Sep-18-2021 12:09:38: 	Cannot read property 'tEmail' of null
+info: Sep-18-2021 12:10:08: 	Starting server at port 5k
+info: Sep-18-2021 12:10:08: 	connected to database
+error: Sep-18-2021 12:10:11: 	Cannot read property 'tEmail' of null
+info: Sep-18-2021 12:10:41: 	Starting server at port 5k
+info: Sep-18-2021 12:10:41: 	connected to database
+info: Sep-18-2021 12:14:13: 	Starting server at port 5k
+info: Sep-18-2021 12:14:13: 	connected to database
+info: Sep-18-2021 12:15:47: 	Starting server at port 5k
+info: Sep-18-2021 12:15:47: 	connected to database
+info: Sep-18-2021 12:17:38: 	Starting server at port 5k
+info: Sep-18-2021 12:17:38: 	connected to database

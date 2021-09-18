@@ -50,11 +50,9 @@ async function getAllStud(tid) {
 
 //delete the student with his email
 async function delStud(sid, tid) {
-    await Student.findOneAndUpdate({sEmail: sid}, {$pull: {tEmail: tid}});
-    const result = await Student.find({sEmail: sid}, {tEmail: {exists: true}, $not: {$size: 0}});
-    if (result) return
-    else await Student.findOneAndRemove({sEmail: sid});
-    return 
+    const result = await Student.findOneAndUpdate({sEmail: sid}, {$pull: {tEmail: tid}}, {new: true});
+    if (result) if (result.tEmail.length == 0) return await Student.findOneAndRemove({sEmail: sid}, {new: true})
+    return result
 };
 
 // Add teacher to an existing doc
