@@ -12,7 +12,6 @@ router.get('/all', auth ,async (req, res) => {
  
 // To fetch exams with specified code, needs to be updated later
 router.get('/:id', auth , async (req, res) => {
-    console.log("here");
     const exam = await getExam(req.userEmail.email,String(req.params.id)); //get the teacher email from token
     if (!exam) return res.status(404).send('Exam with specified code not found');
     res.status(200).send(exam);
