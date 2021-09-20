@@ -137,22 +137,29 @@ function nodemailerService(mail,newPassword){
 
 // Check if a teacher has a specified class
 async function classExits(tid, name) {
-    return await Teacher.exists({tEmail: tid, className: name});
+    return await Teacher.exists({email: tid, className: name});
 };
+
+async function validateClass(body) {
+    const data = Joi.object({
+        email: Joi.string().email().required()
+    });
+    return data.validate(body);
+}
 
 // To add class in teacher document
 async function addClass(tid, name) {
-    return await Teacher.findOneAndUpdate({tEmail: tid}, {$push: {className: name}}, {new: true});
+    return await Teacher.findOneAndUpdate({email: tid}, {$push: {className: name}}, {new: true});
 }
 
 // To get all classes created by a teacher
 async function getClasses(tid) {
-    return await Teacher.find({tEmail: tid}, {_id: 0, _v: 0, className: 1});
+    return await Teacher.find({email: tid}, {_id: 0});
 }
 
 // To get students of a particular class 
 async function getStudForClass(name) {
-    return await Student.find({className: name}, {_id: 0, _v: 0, name: 1, sEmail: 1});
+    return await Student.find({className: name}, {_id: 0, name: 1, sEmail: 1});
 }
 
 exports.teacherCheck = teacherCheck;
@@ -167,3 +174,4 @@ exports.classExits = classExits;
 exports.addClass = addClass;
 exports.getClasses = getClasses;
 exports.getStudForClass = getStudForClass;
+exports.validateClass = validateClass;
