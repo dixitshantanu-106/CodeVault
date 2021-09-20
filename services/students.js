@@ -36,11 +36,6 @@ async function studExists(sid) {
 async function classExits(sid, name) {
     return await Student.exists({sEmail: sid, className: name});
 };
-
-// Check if a student with a particular mail has a specified teacher
-async function teachExists(sid, tid) {
-    return await Student.exists({sEmail: sid, tEmail: tid});
-};
  
 // Get all students related to a specific teacher
 async function getAllStud(classreq) {
@@ -72,7 +67,6 @@ exports.getStud = getStud;
 exports.delStud = delStud;
 exports.getAllStud = getAllStud;
 exports.studExists = studExists;
-exports.teachExists = teachExists;
 exports.classExits = classExits;
 exports.addClass = addClass;
 exports.addTeach = addTeach;

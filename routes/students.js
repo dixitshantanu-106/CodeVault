@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getStud, delStud, addStud, getAllStud, validate, studExists, addClass, addTeach, teachExists, classExits } = require('../services/students');
+const {getStud, delStud, addStud, getAllStud, validate, studExists, addClass, addTeach, classExits } = require('../services/students');
 const {auth} = require('../middleware/auth');
 
 
