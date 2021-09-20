@@ -24,7 +24,7 @@ async function addStud(student) {
  
 // Get a student related to a particular class
 async function getStud(sid, classreq) {
-    return await Student.find({sEmail: sid, className: classreq},{className:0 });
+    return await Student.find({sEmail: sid, className: classreq},{className: 0});
 };
 
 // Check if a student with a particular mail already exists
@@ -45,14 +45,8 @@ async function getAllStud(classreq) {
 //delete the student from a class
 async function delStud(sid, classreq) {
     const result = await Student.findOneAndUpdate({sEmail: sid}, {$pull: {className: classreq}}, {new: true});
-    if (result) if (result.tEmail.length == 0) return await Student.findOneAndRemove({sEmail: sid}, {new: true})
+    if (result) if (result.className.length == 0) return await Student.findOneAndRemove({sEmail: sid}, {new: true})
     return result
-};
-
-// Add teacher to an existing doc
-async function addTeach(sid, tid) {
-    await Student.findOneAndUpdate({sEmail: sid}, {$push: {tEmail: tid}});
-    return true;
 };
 
 // Add class to an existing doc
@@ -69,4 +63,3 @@ exports.getAllStud = getAllStud;
 exports.studExists = studExists;
 exports.classExits = classExits;
 exports.addClass = addClass;
-exports.addTeach = addTeach;
