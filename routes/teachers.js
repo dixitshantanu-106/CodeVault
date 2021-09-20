@@ -51,11 +51,19 @@ router.post('/forgotpassword',async(req,res)=>{
     }
 });
 
+// To get class names created by a teacher
+router.get('/classes', async (req, res) => {
 
+});
 
-router.get('/',(req,res)=>{
-    res.status(200).send("OK DONE");
+// To get students of a particular class created by a teacher
+router.get('/students', async (req, res) => {
+
 })
 
-//exporting router to access from index.js
+// To add class to an existing teacher
+router.put('/class', async (req, res) => {
+
+})
+
 module.exports = router;

@@ -51,8 +51,7 @@ async function delStud(sid, classreq) {
 
 // Add class to an existing doc
 async function addClass(sid, name) {
-    await Student.findOneAndUpdate({sEmail: sid}, {$push: {className: name}});
-    return true;
+    return await Student.findOneAndUpdate({sEmail: sid}, {$push: {className: name}}, {new: true}); 
 };
 
 exports.validate = validate;
